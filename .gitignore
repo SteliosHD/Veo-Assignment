@@ -1,6 +1,6 @@
 # Custom
-/.idea
-
+.idea/
+venv_veo/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
