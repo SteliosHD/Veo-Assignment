@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'veo_company_structure.apps.VeoCompanyStructureConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

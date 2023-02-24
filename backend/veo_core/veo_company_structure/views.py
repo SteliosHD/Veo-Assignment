@@ -1,10 +1,16 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 
 # Create your views here.
 
-
+@api_view(["GET"])
 def index(request):
     # dummy index view
-    html = "<html><body><h1>Index Page</h1></body></html>"
-    return HttpResponse(html)
+    response = {
+        "message": "Server is up and running",
+        "status": 200,
+    }
+    return Response(response)
