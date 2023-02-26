@@ -16,8 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
+from veo_company_structure.urls import API_URL
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('api/v1/', include("veo_company_structure.urls")),
+    path(API_URL, include("veo_company_structure.urls")),
 ]
