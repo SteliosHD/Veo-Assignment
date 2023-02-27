@@ -32,10 +32,15 @@ class NodeBaseView(generics.GenericAPIView):
         Updates the height of all descendants of a node one by one and save them to the database
         """
         to_be_visited: List[Node] = [root_node]
+        visited: List[Node] = []
         while to_be_visited:
             current_node = to_be_visited.pop()
+            # avoid infinite loop in case of circular references in parent-child relationships
+            if current_node in visited:
+                continue
             current_node.height = current_node.parent_id.height + 1 if current_node.parent_id else 0
             current_node.save()
+            visited.append(current_node)
             to_be_visited.extend(self.get_children(current_node))
         return True
 
@@ -60,7 +65,7 @@ class CreateRetriveView(generics.CreateAPIView, generics.RetrieveAPIView, NodeBa
         if serializer.is_valid():
             serializer.save()
             url = reverse(viewname='index')
-            return Response({'url': url, 'message': 'Node created successfully'}, status=status.HTTP_201_CREATED)
+            return Response({'url': url, 'message': 'Success'}, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors)
 
@@ -76,7 +81,7 @@ class UpdateNodeView(generics.UpdateAPIView, NodeBaseView):
             serializer.save()
             self.update_descendants_height(node)
             url = reverse(viewname='get_tree')
-            data = {'url': url, 'message': 'Node updated successfully'}
+            data = {'url': url, 'message': 'Success'}
             return Response(data=data, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors)

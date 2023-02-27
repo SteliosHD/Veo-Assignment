@@ -14,7 +14,14 @@
               "id": 11,
               "name": "Sara",
               "parent_id_id": 2,
-              "sub_tree": []
+              "sub_tree": [
+                {
+                  "id": 14,
+                  "name": "Suzanne",
+                  "parent_id_id": 11,
+                  "sub_tree": []
+                }
+              ]
             }
           ]
         },
