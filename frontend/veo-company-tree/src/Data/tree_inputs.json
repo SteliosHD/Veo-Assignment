@@ -1,0 +1,97 @@
+const trees = [
+  {
+    "name": "tree_1",
+    "data": [
+      {
+        "name": "CEO",
+        "parent_id": null,
+        "id": 1,
+        "node_type": "MANAGER"
+      },
+      {
+        "name": "CFO",
+        "parent_id": 1,
+        "node_type": "MANAGER",
+        "id": 2,
+        "department_name": "Finance"
+      },
+      {
+        "name": "CTO",
+        "parent_id": 1,
+        "node_type": "MANAGER",
+        "id": 3,
+        "department_name": "Engineering"
+      },
+      {
+        "name": "CPO",
+        "parent_id": 1,
+        "node_type": "MANAGER",
+        "id": 4,
+        "department_name": "Product"
+      },
+      {
+        "name": "Daniel",
+        "parent_id": 3,
+        "node_type": "DEVELOPER",
+        "id": 5,
+        "language_preference": "Ruby"
+      },
+      {
+        "name": "Mark",
+        "parent_id": 3,
+        "node_type": "DEVELOPER",
+        "id": 6,
+        "language_preference": "C#"
+      },
+      {
+        "name": "John",
+        "parent_id": 3,
+        "node_type": "DEVELOPER",
+        "id": 7,
+        "language_preference": "Javascript"
+      },
+      {
+        "name": "Peter",
+        "parent_id": 3,
+        "node_type": "DEVELOPER",
+        "id": 8,
+        "language_preference": "Python"
+      },
+      {
+        "name": "Mary",
+        "parent_id": 3,
+        "node_type": "DEVELOPER",
+        "id": 9,
+        "language_preference": "PHP"
+      },
+      {
+        "name": "Jane",
+        "parent_id": 3,
+        "node_type": "DEVELOPER",
+        "id": 10,
+        "language_preference": "Java"
+      },
+      {
+        "name": "Sara",
+        "parent_id": 2,
+        "id": 11
+      },
+      {
+        "name": "Sally",
+        "parent_id": 4,
+        "id": 12
+      },
+      {
+        "name": "Samantha",
+        "parent_id": 4,
+        "id": 13
+      },
+      {
+        "name": "Suzanne",
+        "parent_id": 11,
+        "id": 14
+      }
+    ]
+  }
+]
+
