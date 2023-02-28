@@ -1,6 +1,6 @@
 from typing import List
 
-from django.db.models import QuerySet
+
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from rest_framework import generics, status

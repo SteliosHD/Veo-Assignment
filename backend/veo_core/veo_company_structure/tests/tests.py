@@ -6,13 +6,12 @@ from io import BytesIO
 from django.test import TestCase
 from django.urls import reverse
 from rest_framework.parsers import JSONParser
-from rest_framework.test import APIRequestFactory, APITestCase
+from rest_framework.test import  APITestCase
 
 from veo_company_structure.api.node import NodeBaseView
 from veo_company_structure.models import Node
 from veo_company_structure.serializers import NodeCreateRetrieveSerializer
 from veo_company_structure.helpers.tree_utils import get_tree
-from veo_company_structure.urls import API_URL
 
 
 class TestBase(TestCase):
@@ -96,7 +95,6 @@ class TestNodeViews(TestBase, APITestCase):
     def test_update_descentants_funcionality(self):
         self.helper_descendants_scenario_1_builder()
         scenario = self.descendants_scenario_1
-
         scenario['node_base'].update_descendants_height(scenario['test_node'])
         test_node_new_height = scenario['test_node'].height
         self.assertEqual(test_node_new_height, scenario['test_node_initial_height'] + 1)
