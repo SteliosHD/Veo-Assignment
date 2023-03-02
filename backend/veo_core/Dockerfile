@@ -1,7 +1,7 @@
 FROM python:3.10
 
 # setup environment variable
-ENV DockerHOME=/home/app/veo
+ENV DockerHOME=/home/app/veo_backend
 
 # set work directory
 RUN mkdir -p $DockerHOME
