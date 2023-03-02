@@ -92,6 +92,27 @@
         "id": 14
       }
     ]
+  },
+  {
+    "name": "empty_tree",
+    "data": []
+  },
+  {
+    "name": "multiroot_tree",
+    "data": [
+      {
+        "name": "CEO",
+        "parent_id": null,
+        "id": 1,
+        "node_type": "MANAGER"
+      },
+      {
+        "name": "CEO 2",
+        "parent_id": null,
+        "id": 2,
+        "node_type": "MANAGER"
+      }
+    ]
   }
 ]
 
