@@ -19,6 +19,6 @@ export type FormSuccessResponse = {
 }
 
 export type FormErrorResponse = {
-    error: string
-    message: string
+  error: string
+  message: string
 }

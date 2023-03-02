@@ -1,18 +1,17 @@
-.navbar{
+.navbar {
   background-color: #e3f2fd;
-   margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
-.selected-wrapper{
+.selected-wrapper {
   color: black;
 }
 
-.selected-wrapper--text{
+.selected-wrapper--text {
   color: gray;
 }
 
-.selected-wrapper--node{
+.selected-wrapper--node {
   font-weight: 600;
   color: lightskyblue;
-
 }

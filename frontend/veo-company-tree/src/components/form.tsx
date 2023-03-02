@@ -23,16 +23,17 @@ export default function Form({ selected }: { selected: TreeSelectedProps }) {
     languagePreference: undefined,
   })
 
-  const { mutate } = useMutation<FormSuccessResponse, FormErrorResponse, FormRequestData>((newNode) =>
-    fetch(API_URL + 'nodes/' + selected.id, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newNode),
-    })
-      .then(handleSuccess)
-      .catch((err) => console.log(err.then((errData: FormErrorResponse) => errData.message))),
+  const { mutate } = useMutation<FormSuccessResponse, FormErrorResponse, FormRequestData>(
+    (newNode) =>
+      fetch(API_URL + 'nodes/' + selected.id, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newNode),
+      })
+        .then(handleSuccess)
+        .catch((err) => console.log(err.then((errData: FormErrorResponse) => errData.message))),
   )
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -151,9 +152,7 @@ export default function Form({ selected }: { selected: TreeSelectedProps }) {
         Submit
       </button>
       {selected.id === -1 && (
-        <span className='span-warn'>
-          Select a parent node to create a new node
-        </span>
+        <span className='span-warn'>Select a parent node to create a new node</span>
       )}
     </form>
   )
