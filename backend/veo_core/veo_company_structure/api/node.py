@@ -66,7 +66,8 @@ class CreateRetriveView(generics.CreateAPIView, generics.RetrieveAPIView, NodeBa
             url = reverse(viewname='index')
             return Response({'url': url, 'message': 'Success'}, status=status.HTTP_201_CREATED)
         else:
-            return Response({'error': serializer.errors, 'message': 'Failed'}, status=status.HTTP_400_BAD_REQUEST)
+            data = {'error': serializer.errors, 'message': 'Failed'}
+            return Response(data=data, status=status.HTTP_400_BAD_REQUEST)
 
 
 class UpdateNodeView(generics.UpdateAPIView, NodeBaseView):
@@ -83,7 +84,8 @@ class UpdateNodeView(generics.UpdateAPIView, NodeBaseView):
             data = {'url': url, 'message': 'Success'}
             return Response(data=data, status=status.HTTP_200_OK)
         else:
-            return Response(serializer.errors)
+            data = {'error': serializer.errors, 'message': 'Failed'}
+            return Response(data=data, status=status.HTTP_400_BAD_REQUEST)
 
 
 class RetrieveChildrenView(generics.RetrieveAPIView, NodeBaseView):

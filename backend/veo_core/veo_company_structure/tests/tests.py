@@ -15,15 +15,15 @@ from veo_company_structure.helpers.tree_utils import get_tree
 
 
 class TestBase(TestCase):
-    def setUp(self) -> None:
-        data = json.loads(open('veo_company_structure/tests/test_data/tree_inputs.json').read())
-        tree = data[0]['data']
-        for node in tree:
-            serializer = NodeCreateRetrieveSerializer(data=node)
-            if serializer.is_valid():
-                serializer.save()
-            else:
-                raise Exception(serializer.errors)
+    # def setUp(self) -> None:
+    #     data = json.loads(open('veo_company_structure/tests/test_data/tree_inputs.json').read())
+    #     tree = data[0]['data']
+    #     for node in tree:
+    #         serializer = NodeCreateRetrieveSerializer(data=node)
+    #         if serializer.is_valid():
+    #             serializer.save()
+    #         else:
+    #             raise Exception(serializer.errors)
 
     def helper_test_response(self, response, status_code, redirect_url, message):
         response_status_code = response.status_code if 'status_code' in response.__dir__() else None
@@ -35,6 +35,7 @@ class TestBase(TestCase):
 
 
 class TestNodeModel(TestBase):
+    fixtures = ['default_tree.json']
 
     def test_node_model_creation(self):
         root_node = Node.objects.get(id=1)
@@ -57,6 +58,7 @@ class TestNodeModel(TestBase):
 
 
 class TestNodeViews(TestBase, APITestCase):
+    fixtures = ['default_tree.json']
     update_parent_scenario_1 = {}
     descendants_scenario_1 = {}
 

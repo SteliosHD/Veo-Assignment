@@ -1,5 +1,5 @@
 from typing import List
-
+from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 from veo_company_structure.models import Node
 from veo_company_structure.type_hints import json_tree_type, json_dict_tree_type
 
@@ -14,6 +14,8 @@ def get_tree(nodes: List[json_tree_type] = None, root: Node = None) -> json_tree
     }
     # Recursively build the tree from top to bottom
     for node in nodes:
+        if not all(key in node for key in ['parent_id_id', 'id', 'name']):
+            raise KeyError('The keys "parent_id_id", "id" and "name" must be present in the nodes')
         dict_tree.setdefault(node['parent_id_id'], {'sub_tree': []})
         dict_tree.setdefault(node['id'], {'sub_tree': []})
         dict_tree[node['id']].update(node)
@@ -37,4 +39,6 @@ def get_dict_nodes(model=None) -> List[json_tree_type]:
     if model is None:
         model = Node
     nodes = list(model.objects.values('id', 'parent_id_id', 'name'))
+    if len(nodes) < 2:
+        return []
     return nodes[1:]
