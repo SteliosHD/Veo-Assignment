@@ -50,7 +50,7 @@ class NodeBaseView(generics.GenericAPIView):
         return list(self.queryset.filter(parent_id=node_id).all())
 
 
-class CreateRetriveView(generics.CreateAPIView, generics.RetrieveAPIView, NodeBaseView):
+class CreateRetrieveView(generics.CreateAPIView, generics.RetrieveAPIView, NodeBaseView):
     serializer_class = NodeCreateRetrieveSerializer
 
     def retrieve(self, request, *args, **kwargs):

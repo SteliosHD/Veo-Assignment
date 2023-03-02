@@ -1,5 +1,4 @@
 from typing import List
-from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 from veo_company_structure.models import Node
 from veo_company_structure.type_hints import json_tree_type, json_dict_tree_type
 
