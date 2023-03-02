@@ -62,8 +62,6 @@ class TestNodeModel(TestBase):
 
 class TestNodeViews(TestBase, APITestCase):
     fixtures = ['default_tree.json']
-    update_parent_scenario_1 = {}
-    descendants_scenario_1 = {}
 
     def test_node_create_view_and_functionality_success(self):
         parent_id = 1
@@ -96,8 +94,7 @@ class TestNodeViews(TestBase, APITestCase):
         self.assertDictEqual(response_tree, test_expected_tree_1)
 
     def test_update_descentants_scenario_1_builder(self):
-        self.helper_descendants_scenario_1_builder()
-        scenario = self.descendants_scenario_1
+        scenario = self.get_descendants_scenario_1()
         self.assertEqual(scenario['test_node'].name, 'CFO')
         self.assertEqual(scenario['test_node'].parent_id.id, scenario['test_parent_node'].id)
         self.assertEqual(scenario['test_node'].height, scenario['test_node_initial_height'] + 1)
@@ -105,8 +102,7 @@ class TestNodeViews(TestBase, APITestCase):
             self.assertEqual(child.height, scenario['test_node_initial_height'] + 1)
 
     def test_update_descentants_funcionality(self):
-        self.helper_descendants_scenario_1_builder()
-        scenario = self.descendants_scenario_1
+        scenario = self.get_descendants_scenario_1()
         scenario['node_base'].update_descendants_height(scenario['test_node'])
         test_node_new_height = scenario['test_node'].height
         self.assertEqual(test_node_new_height, scenario['test_node_initial_height'] + 1)
@@ -114,40 +110,34 @@ class TestNodeViews(TestBase, APITestCase):
             self.assertEqual(child.height, test_node_new_height + 1)
 
     def test_update_parent_view_response_success(self):
-        self.helper_update_view_scenario_1_builder()
-        scenario = self.update_parent_scenario_1
+        scenario = self.get_update_scenario_1()
         redirect_url = reverse('get_tree')
         response = self.client.patch(scenario['url'], scenario['data'])
         self.helper_test_response(response, 200, redirect_url, 'Success')
 
     def test_update_parent_view_response_empty_body_failure(self):
-        self.helper_update_view_scenario_1_builder()
-        scenario = self.update_parent_scenario_1
+        scenario = self.get_update_scenario_1()
         response = self.client.patch(scenario['url'], {})
         self.helper_test_response(response, 400, None, 'Failed')
 
     def test_update_parent_view_response_invalid_parent_failure(self):
-        self.helper_update_view_scenario_1_builder()
-        scenario = self.update_parent_scenario_1
+        scenario = self.get_update_scenario_1()
         scenario['data']['parent_id'] = 100
         response = self.client.patch(scenario['url'], scenario['data'])
         self.helper_test_response(response, 400, None, 'Failed')
 
     def test_update_parent_view_response_invalid_field_failure(self):
-        self.helper_update_view_scenario_1_builder()
-        scenario = self.update_parent_scenario_1
+        scenario = self.get_update_scenario_1()
         response = self.client.patch(scenario['url'], {'name': 'This field is not allowed to be updated'})
         self.helper_test_response(response, 400, None, 'Failed')
 
     def test_update_parent_view_scenario_1_bulider(self):
-        self.helper_update_view_scenario_1_builder()
-        scenario = self.update_parent_scenario_1
+        scenario = self.get_update_scenario_1()
         self.assertEqual(scenario['test_parent_node'].name, 'CFO')
         self.assertEqual(scenario['test_node'].name, 'CTO')
 
     def test_update_parent_view_functionality_success(self):
-        self.helper_update_view_scenario_1_builder()
-        scenario = self.update_parent_scenario_1
+        scenario = self.get_update_scenario_1()
         response = self.client.patch(scenario['url'], scenario['data'])
         self.assertEqual(response.status_code, 200)
         test_node_updated = Node.objects.get(id=scenario['test_node_id'])
@@ -157,11 +147,12 @@ class TestNodeViews(TestBase, APITestCase):
         self.assertEqual(test_child_node_updated.height,
                          scenario['test_child_node_initial_height'] + scenario['height_diff'])
 
-    def helper_update_view_scenario_1_builder(self):
+    @staticmethod
+    def get_update_scenario_1():
         """
         Scenario 1: Update parent of a test node that has childer and the new parent has the same height as the node
         """
-        scenario = self.update_parent_scenario_1
+        scenario = dict()
 
         # Hardcoded values
         scenario['parent_id'] = 2  # new parent id
@@ -180,11 +171,15 @@ class TestNodeViews(TestBase, APITestCase):
         scenario['test_node_new_height'] = scenario['test_parent_node'].height + 1
         scenario['height_diff'] = scenario['test_node_new_height'] - scenario['test_node_initial_height']
 
-    def helper_descendants_scenario_1_builder(self):
-        scenario = self.descendants_scenario_1
+        return scenario
+
+    @staticmethod
+    def get_descendants_scenario_1():
+        scenario = dict()
         scenario['node_base'] = NodeBaseView()
         scenario['test_node'] = Node.objects.get(id=2)
         scenario['test_node_initial_height'] = deepcopy(scenario['test_node'].height)
         scenario['test_parent_node'] = Node.objects.get(id=3)
         scenario['test_node'].parent_id = scenario['test_parent_node']
         scenario['test_node'].save()
+        return scenario
