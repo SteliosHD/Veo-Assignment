@@ -63,6 +63,7 @@ sudo docker run -p 3005:3005 veo-frontend
 Runs the app in the development mode.\
 Open [http://localhost:3005](http://localhost:3005) to view it in the browser.
 
+**The frontend requires the backend to be running in http://localhost:8000 before working properly**
 
 ### Available Endpoints
 * **/api/v1/tree/** - GET - Returns the tree in JSON format
