@@ -1,23 +1,24 @@
-const tree_json = {
+/* eslint-disable */
+export const tree_json = {
   trees: [
     {
       id: 1,
-      name: "CEO",
+      name: 'CEO',
       parent_id_id: 0,
       sub_tree: [
         {
           id: 2,
-          name: "CFO",
+          name: 'CFO',
           parent_id_id: 1,
           sub_tree: [
             {
               id: 11,
-              name: "Sara",
+              name: 'Sara',
               parent_id_id: 2,
               sub_tree: [
                 {
                   id: 14,
-                  name: "Suzanne",
+                  name: 'Suzanne',
                   parent_id_id: 11,
                   sub_tree: [],
                 },
@@ -27,42 +28,42 @@ const tree_json = {
         },
         {
           id: 3,
-          name: "CTO",
+          name: 'CTO',
           parent_id_id: 1,
           sub_tree: [
             {
               id: 5,
-              name: "Daniel",
+              name: 'Daniel',
               parent_id_id: 3,
               sub_tree: [],
             },
             {
               id: 6,
-              name: "Mark",
+              name: 'Mark',
               parent_id_id: 3,
               sub_tree: [],
             },
             {
               id: 7,
-              name: "John",
+              name: 'John',
               parent_id_id: 3,
               sub_tree: [],
             },
             {
               id: 8,
-              name: "Peter",
+              name: 'Peter',
               parent_id_id: 3,
               sub_tree: [],
             },
             {
               id: 9,
-              name: "Mary",
+              name: 'Mary',
               parent_id_id: 3,
               sub_tree: [],
             },
             {
               id: 10,
-              name: "Jane",
+              name: 'Jane',
               parent_id_id: 3,
               sub_tree: [],
             },
@@ -70,18 +71,18 @@ const tree_json = {
         },
         {
           id: 4,
-          name: "CPO",
+          name: 'CPO',
           parent_id_id: 1,
           sub_tree: [
             {
               id: 12,
-              name: "Sally",
+              name: 'Sally',
               parent_id_id: 4,
               sub_tree: [],
             },
             {
               id: 13,
-              name: "Samantha",
+              name: 'Samantha',
               parent_id_id: 4,
               sub_tree: [],
             },
@@ -90,6 +91,6 @@ const tree_json = {
       ],
     },
   ],
-};
+}
 
-export default tree_json;
+

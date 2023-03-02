@@ -1,6 +1,5 @@
 from typing import List
 
-
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from rest_framework import generics, status
@@ -67,7 +66,7 @@ class CreateRetriveView(generics.CreateAPIView, generics.RetrieveAPIView, NodeBa
             url = reverse(viewname='index')
             return Response({'url': url, 'message': 'Success'}, status=status.HTTP_201_CREATED)
         else:
-            return Response(serializer.errors)
+            return Response({'error': serializer.errors, 'message': 'Failed'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class UpdateNodeView(generics.UpdateAPIView, NodeBaseView):

@@ -22,6 +22,7 @@
   },
   "include": [
     "src",
+    "veo-company-tree"
   ],
   "paths": {
     "@public/*": ["public/*"],
