@@ -1,6 +1,10 @@
 from django.db import models
 
 
+class MultipleRootNodesError(Exception):
+    pass
+
+
 class Node(models.Model):
     NODE_TYPE_CHOICES = [
         ('MANAGER', 'Manager'),
@@ -23,4 +27,6 @@ class Node(models.Model):
             self.height = 0
         else:
             self.height = self.parent_id.height + 1
+        if self.parent_id is None and self.__class__.objects.get(parent_id=None) is not None:
+            raise MultipleRootNodesError('There can be only one root node')
         super().save(*args, **kwargs)

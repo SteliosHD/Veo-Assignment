@@ -16,9 +16,30 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
+from django.views.generic import RedirectView
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework import permissions
+
 from veo_company_structure.urls import API_URL
+
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="VEO API",
+        default_version='v1',
+        description="VEO API",
+        terms_of_service="",
+        contact=openapi.Contact(email="stelios.bitzas@gmail.com"),
+        license=openapi.License(name="Test License"),
+    ),
+    public=True,
+    permission_classes=[permissions.AllowAny],
+)
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path(API_URL, include("veo_company_structure.urls")),
+    path("docs/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
 ]

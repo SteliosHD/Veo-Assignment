@@ -63,7 +63,7 @@ class CreateRetriveView(generics.CreateAPIView, generics.RetrieveAPIView, NodeBa
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            url = reverse(viewname='index')
+            url = reverse(viewname='get_tree')
             return Response({'url': url, 'message': 'Success'}, status=status.HTTP_201_CREATED)
         else:
             data = {'error': serializer.errors, 'message': 'Failed'}
@@ -103,6 +103,6 @@ class RetrieveTreeJSONView(generics.RetrieveAPIView, NodeBaseView):
 
     def retrieve(self, request, *args, **kwargs):
         tree = get_tree()
-        url_redirect = reverse(viewname='index')
+        url_redirect = reverse(viewname='get_tree')
         data = {'tree': JSONRenderer().render(tree), 'url': url_redirect, 'message': 'Success'}
         return Response(data=data, status=status.HTTP_200_OK)

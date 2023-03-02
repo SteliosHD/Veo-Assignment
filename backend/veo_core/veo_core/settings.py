@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'veo_company_structure.apps.VeoCompanyStructureConfig',
     'rest_framework',
     'corsheaders',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
