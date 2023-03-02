@@ -56,16 +56,11 @@ export default function Form({ selected }: { selected: TreeSelectedProps }) {
     }
   }
 
-  const getNodeType = () => {
-    if (formValues.nodeType !== 'Employee') {
-      return formValues.nodeType.toUpperCase()
-    } else return 'NONE'
-  }
 
   const prepareRequestData = (): FormRequestData => {
     const requestData: FormRequestData = {
       name: formValues.name,
-      node_type: getNodeType(),
+      node_type: formValues.nodeType.toUpperCase(),
       parent_id: selected.id,
     }
 
