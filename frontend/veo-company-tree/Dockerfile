@@ -20,7 +20,6 @@ COPY . $DockerHOME
 RUN npm ci 
 
 # ==== RUN =======
-# Set the env to "production"
 ENV DEBUG false
 # Expose the port on which the app will be running (3005 is  our default port)
 EXPOSE 3005

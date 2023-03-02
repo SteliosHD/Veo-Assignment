@@ -19,6 +19,7 @@ export default function Tree({
     <div>
       <button
         className='btn button-light'
+        type='button'
         style={{
           margin: '2px',
           border: '1px solid grey',
