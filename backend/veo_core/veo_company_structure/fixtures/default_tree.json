@@ -1,0 +1,158 @@
+[
+  {
+    "model": "veo_company_structure.node",
+    "pk": 1,
+    "fields": {
+      "name": "CEO",
+      "parent_id": null,
+      "height": 0,
+      "node_type": "MANAGER",
+      "department_name": null,
+      "language_preference": null
+    }
+  },
+  {
+    "model": "veo_company_structure.node",
+    "pk": 2,
+    "fields": {
+      "name": "CFO",
+      "parent_id": 1,
+      "height": 1,
+      "node_type": "MANAGER",
+      "department_name": "Finance",
+      "language_preference": null
+    }
+  },
+  {
+    "model": "veo_company_structure.node",
+    "pk": 3,
+    "fields": {
+      "name": "CTO",
+      "parent_id": 1,
+      "height": 1,
+      "node_type": "MANAGER",
+      "department_name": "Engineering",
+      "language_preference": null
+    }
+  },
+  {
+    "model": "veo_company_structure.node",
+    "pk": 4,
+    "fields": {
+      "name": "CPO",
+      "parent_id": 1,
+      "height": 1,
+      "node_type": "MANAGER",
+      "department_name": "Product",
+      "language_preference": null
+    }
+  },
+  {
+    "model": "veo_company_structure.node",
+    "pk": 5,
+    "fields": {
+      "name": "Daniel",
+      "parent_id": 3,
+      "height": 2,
+      "node_type": "DEVELOPER",
+      "department_name": null,
+      "language_preference": "Ruby"
+    }
+  },
+  {
+    "model": "veo_company_structure.node",
+    "pk": 6,
+    "fields": {
+      "name": "Mark",
+      "parent_id": 3,
+      "height": 2,
+      "node_type": "DEVELOPER",
+      "department_name": null,
+      "language_preference": "C#"
+    }
+  },
+  {
+    "model": "veo_company_structure.node",
+    "pk": 7,
+    "fields": {
+      "name": "John",
+      "parent_id": 3,
+      "height": 2,
+      "node_type": "DEVELOPER",
+      "department_name": null,
+      "language_preference": "Javascript"
+    }
+  },
+  {
+    "model": "veo_company_structure.node",
+    "pk": 8,
+    "fields": {
+      "name": "Peter",
+      "parent_id": 3,
+      "height": 2,
+      "node_type": "DEVELOPER",
+      "department_name": null,
+      "language_preference": "Python"
+    }
+  },
+  {
+    "model": "veo_company_structure.node",
+    "pk": 9,
+    "fields": {
+      "name": "Mary",
+      "parent_id": 3,
+      "height": 2,
+      "node_type": "DEVELOPER",
+      "department_name": null,
+      "language_preference": "PHP"
+    }
+  },
+  {
+    "model": "veo_company_structure.node",
+    "pk": 10,
+    "fields": {
+      "name": "Jane",
+      "parent_id": 3,
+      "height": 2,
+      "node_type": "DEVELOPER",
+      "department_name": null,
+      "language_preference": "Java"
+    }
+  },
+  {
+    "model": "veo_company_structure.node",
+    "pk": 11,
+    "fields": {
+      "name": "Sara",
+      "parent_id": 2,
+      "height": 2,
+      "node_type": "EMPLOYEE",
+      "department_name": null,
+      "language_preference": null
+    }
+  },
+  {
+    "model": "veo_company_structure.node",
+    "pk": 12,
+    "fields": {
+      "name": "Sally",
+      "parent_id": 4,
+      "height": 2,
+      "node_type": "EMPLOYEE",
+      "department_name": null,
+      "language_preference": null
+    }
+  },
+  {
+    "model": "veo_company_structure.node",
+    "pk": 13,
+    "fields": {
+      "name": "Samantha",
+      "parent_id": 4,
+      "height": 2,
+      "node_type": "EMPLOYEE",
+      "department_name": null,
+      "language_preference": null
+    }
+  }
+]

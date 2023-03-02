@@ -1,0 +1,17 @@
+.navbar {
+  background-color: #e3f2fd;
+  margin-bottom: 20px;
+}
+
+.selected-wrapper {
+  color: black;
+}
+
+.selected-wrapper--text {
+  color: gray;
+}
+
+.selected-wrapper--node {
+  font-weight: 600;
+  color: lightskyblue;
+}

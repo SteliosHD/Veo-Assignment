@@ -1,0 +1,26 @@
+[
+  {
+    "model": "veo_company_structure.node",
+    "pk": 1,
+    "fields": {
+      "name": "CEO",
+      "parent_id": null,
+      "height": 0,
+      "node_type": "MANAGER",
+      "department_name": null,
+      "language_preference": null
+    }
+  },
+  {
+    "model": "veo_company_structure.node",
+    "pk": 2,
+    "fields": {
+      "name": "CEO 2",
+      "parent_id": null,
+      "height": 0,
+      "node_type": "MANAGER",
+      "department_name": null,
+      "language_preference": null
+    }
+  }
+]
